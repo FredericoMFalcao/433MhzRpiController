@@ -1,0 +1,2 @@
+# Append this to /etc/sudoers
+www-data ALL=(ALL:ALL) NOPASSWD:ALL
