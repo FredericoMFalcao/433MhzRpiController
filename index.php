@@ -10,8 +10,8 @@ foreach(scandir(__DIR__) as $file)
 /*
 *	2. Transmit signal
 */
-if (isset($_GET) && isset($_GET['action']) && $_GET['action'] == "send") {
-	exec("sudo ".__DIR__."/sendSignal {$_GET['name']} 2>&1", $output, $retVal);
+if (isset($_REQUEST) && isset($_REQUEST['action']) && $_REQUEST['action'] == "send") {
+	exec("sudo ".__DIR__."/sendSignal {$_REQUEST['name']} 2>&1", $output, $retVal);
 	if ($retVal > 0)
 		$message = implode("\n", $output);
 	else
@@ -20,8 +20,8 @@ if (isset($_GET) && isset($_GET['action']) && $_GET['action'] == "send") {
 /*
 *	3. Record signal
 */
-if (isset($_GET) && isset($_GET['action']) && $_GET['action'] == "record") {
-	exec("sudo ".__DIR__."/recordSignal {$_GET['name']}.bin", $output, $retVal);
+if (isset($_REQUEST) && isset($_REQUEST['action']) && $_REQUEST['action'] == "record") {
+	exec("sudo ".__DIR__."/recordSignal {$_REQUEST['name']}.bin", $output, $retVal);
 	if ($retVal > 0)
 		$message = implode("\n", $output);
 	else
@@ -31,8 +31,8 @@ if (isset($_GET) && isset($_GET['action']) && $_GET['action'] == "record") {
 /*
 *	4. Delete signal
 */
-if (isset($_GET) && isset($_GET['action']) && $_GET['action'] == "delete") {
-	exec("sudo rm ".__DIR__."/".$_GET['name'], $output, $retVal);
+if (isset($_REQUEST) && isset($_REQUEST['action']) && $_REQUEST['action'] == "delete") {
+	exec("sudo rm ".__DIR__."/".$_REQUEST['name'], $output, $retVal);
 	if ($retVal > 0)
 		$message = implode("\n", $output);
 	else
